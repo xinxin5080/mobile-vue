@@ -4,6 +4,10 @@ import router from './router'
 import store from './store'
 import './style/iconfont.scss'
 import './style/reset.scss'
+import Vant from 'vant'
+import 'vant/lib/index.css'
+
+Vue.use(Vant)
 
 Vue.config.productionTip = false
 
