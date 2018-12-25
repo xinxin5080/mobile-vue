@@ -2,8 +2,9 @@
   <div>
     <div id="font">
    <ul>
-     <li :class="$route.name ==='home' ? 'active':''" @click="jumpTo('home')">
        <!-- 动态添加高亮 -->
+       <!-- 01.通过三元表达式,判断当前的路由是否对应 -->
+     <li :class="$route.name ==='home' ? 'active':''" @click="jumpTo('home')">
        <i class="iconfont icon-home"></i>
        <p>首页</p>
      </li>
@@ -31,9 +32,9 @@ export default {
     }
   },
   methods: {
-    // 通过点击将路由跳转的名字传递过来
+    // 02.通过点击将路由跳转的名字传递过来
     jumpTo (urlName) {
-      // 跳转到
+      // 03.跳转到对应的路由
       this.$router.push({ name: urlName })
     }
   }

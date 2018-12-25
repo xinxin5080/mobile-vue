@@ -7,7 +7,7 @@
   <!-- 图标 -->
    <div class="box">
      <ul>
-       <li v-for="(item, index) in navList" :key="index" @click="jumpTo">
+       <li v-for="(item, index) in navList" :key="index" @click="jumpTo(item.urlName)">
          <img :src="item.imgurl" alt="">
          <p>{{item.title}}</p>
        </li>
@@ -46,8 +46,9 @@ export default {
     }
   },
   methods: {
-    jumpTo () {
-
+    // 通过点击将路由的name传递过来,进行对应的路由跳转
+    jumpTo (urlName) {
+      this.$router.push({ name: urlName })
     }
   }
 }

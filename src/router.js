@@ -15,6 +15,11 @@ export default new Router({
       path: '/member',
       name: 'member',
       component: () => import(/* webpackChunkName: "member" */ './views/Member.vue')
+    },
+    {
+      path: '/newsList',
+      name: 'newslist',
+      component: () => import(/* webpackChunkName: "member" */ './views/news/NewsList.vue')
     }
   ]
 })
