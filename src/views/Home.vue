@@ -35,8 +35,25 @@
        </li>
      </ul>
    </div>
+   <!-- 3.0使用组件 -->
+  <font></font>
+   <!--  -->
  </div>
 </template>
+<script>
+// 1.0引进封装的组件
+import font from '@/components/font'
+export default {
+// 2.0注入
+  components: {
+    font
+  },
+  data () {
+
+  }
+}
+</script>
+
 <style lang="scss" scoped>
 .home {
 .van-swipe{
