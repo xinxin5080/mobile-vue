@@ -2,36 +2,13 @@
   <div class="home">
     <!-- 轮播图 -->
    <van-swipe :autoplay="5000" indicator-color="white">
-      <van-swipe-item><img src="../assets/imgs/1.jpg" alt=""></van-swipe-item>
-      <van-swipe-item><img src="../assets/imgs/2.jpg" alt=""></van-swipe-item>
-      <van-swipe-item><img src="../assets/imgs/3.jpg" alt=""></van-swipe-item>
-      <van-swipe-item><img src="../assets/imgs/4.jpg" alt=""></van-swipe-item>
+      <van-swipe-item v-for="(arr, index) in imgList " :key="index"><img :src="arr" alt=""></van-swipe-item>
   </van-swipe>
    <div class="box">
      <ul>
-       <li>
-         <img src="../assets/imgs/menu01.png" alt="">
-         <p>新闻资讯</p>
-       </li>
-       <li>
-         <img src="../assets/imgs/menu02.png" alt="">
-          <p>图片分享</p>
-       </li>
-       <li>
-         <img src="../assets/imgs/menu03.png" alt="">
-          <p>商品购买</p>
-       </li>
-       <li>
-         <img src="../assets/imgs/menu04.png" alt="">
-          <p>留言反馈</p>
-       </li>
-       <li>
-         <img src="../assets/imgs/menu05.png" alt="">
-          <p>视频专区</p>
-       </li>
-       <li>
-         <img src="../assets/imgs/menu06.png" alt="">
-          <p>反馈我们</p>
+       <li v-for="(item, index) in navList" :key="index">
+         <img :src="item.imgurl" alt="">
+         <p>{{item.title}}</p>
        </li>
      </ul>
    </div>
@@ -49,7 +26,23 @@ export default {
     font
   },
   data () {
-
+    return {
+      imgList: [
+        require('../assets/imgs/1.jpg'),
+        require('../assets/imgs/2.jpg'),
+        require('../assets/imgs/3.jpg'),
+        require('../assets/imgs/4.jpg')
+      ],
+      // src图片的渲染,数据要用模型 require,不然会被当成字符串
+      navList: [
+        { imgurl: require('../assets/imgs/menu01.png'), title: '新闻资讯', urlName: 'newslist' },
+        { imgurl: require('../assets/imgs/menu02.png'), title: '图片分享', urlName: '' },
+        { imgurl: require('../assets/imgs/menu03.png'), title: '商品购买', urlName: '' },
+        { imgurl: require('../assets/imgs/menu04.png'), title: '留言反馈', urlName: '' },
+        { imgurl: require('../assets/imgs/menu05.png'), title: '视频专区', urlName: '' },
+        { imgurl: require('../assets/imgs/menu06.png'), title: '反馈我们', urlName: '' }
+      ]
+    }
   }
 }
 </script>
