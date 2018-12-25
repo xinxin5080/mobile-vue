@@ -2,11 +2,12 @@
   <div>
     <div id="font">
    <ul>
-     <li>
+     <li :class="$route.name ==='home' ? 'active':''" @click="jumpTo('home')">
+       <!-- 动态添加高亮 -->
        <i class="iconfont icon-home"></i>
        <p>首页</p>
      </li>
-     <li>
+     <li :class="$route.name ==='member' ? 'active':''" @click="jumpTo('member')">
        <i class="iconfont icon-weibiaoti2fuzhi12"></i>
        <p>会员</p>
      </li>
@@ -22,6 +23,23 @@
    </div>
   </div>
 </template>
+<script>
+export default {
+  data () {
+    return {
+
+    }
+  },
+  methods: {
+    // 通过点击将路由跳转的名字传递过来
+    jumpTo (urlName) {
+      // 跳转到
+      this.$router.push({ name: urlName })
+    }
+  }
+}
+</script>
+
 <style lang="scss" scoped>
  #font{
       font-size: 16px;
@@ -41,6 +59,8 @@
       text-align: center;
     }
     }
-
   }
+  .active {
+  color: #26a2ff;
+}
 </style>

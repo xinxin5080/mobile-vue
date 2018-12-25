@@ -4,9 +4,10 @@
    <van-swipe :autoplay="5000" indicator-color="white">
       <van-swipe-item v-for="(arr, index) in imgList " :key="index"><img :src="arr" alt=""></van-swipe-item>
   </van-swipe>
+  <!-- 图标 -->
    <div class="box">
      <ul>
-       <li v-for="(item, index) in navList" :key="index">
+       <li v-for="(item, index) in navList" :key="index" @click="jumpTo">
          <img :src="item.imgurl" alt="">
          <p>{{item.title}}</p>
        </li>
@@ -42,6 +43,11 @@ export default {
         { imgurl: require('../assets/imgs/menu05.png'), title: '视频专区', urlName: '' },
         { imgurl: require('../assets/imgs/menu06.png'), title: '反馈我们', urlName: '' }
       ]
+    }
+  },
+  methods: {
+    jumpTo () {
+
     }
   }
 }
