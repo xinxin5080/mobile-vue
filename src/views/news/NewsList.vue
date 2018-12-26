@@ -5,7 +5,7 @@
     <!-- 列表 -->
     <div class="news-list">
       <ul>
-        <li v-for="item in newsdata" :key="item.id">
+        <li v-for="item in newsdata" :key="item.id" @click="hit(item.id)">
           <div class="news-item">
             <img :src="item.img_url" alt="">
             <div class="content">
@@ -30,10 +30,15 @@ export default {
       newsdata: []
     }
   },
+  methods: {
+    hit (id) {
+      this.$router.push({ name: 'newsdetails', params: { id } })
+    }
+  },
   created () {
     newsList()
       .then(res => {
-        console.log(res)
+        // console.log(res)
         this.newsdata = res.message
       })
   }
