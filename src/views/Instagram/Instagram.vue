@@ -5,7 +5,7 @@
       <div class="cate">
         <ul id="cateul">
           <li><span>全部</span></li>
-          <li v-for="item in imgList" :key="item.id">
+          <li v-for="item in imgList" :key="item.id" @click="headedtitle(item.id)">
             <span>{{item.title}}</span>
           </li>
         </ul>
@@ -13,7 +13,8 @@
       <div class="img-list-box">
         <ul>
           <li v-for="item2 in imgs" :key="item2.id">
-            <router-link to="/"><img :src="item2.img_url" alt="item2.title"></router-link>
+            <!-- 使用模板,要加:号绑定 -->
+            <router-link :to='`/imgDetail/${item2.id}`'><img :src="item2.img_url" alt="item2.title"></router-link>
             <p><span class="title">{{item2.zhaiyao}}</span></p>
           </li>
         </ul>
@@ -31,7 +32,7 @@ export default {
   data () {
     return {
       imgList: [],
-      id: 0,
+      id: '',
       imgs: []
     }
   },
@@ -43,9 +44,15 @@ export default {
         let w = (res.message.length + 1) * 60
         document.getElementById('cateul').style.width = w + 'px'
       })
+    this.id = 0
     this.init()
   },
   methods: {
+    headedtitle (id) {
+      this.id = id
+      console.log(id)
+      this.init()
+    },
     init () {
       imgdata(this.id)
         .then(res => {
@@ -53,6 +60,7 @@ export default {
           this.imgs = res.message
         })
     }
+
   }
 }
 </script>

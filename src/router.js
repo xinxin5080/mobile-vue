@@ -29,7 +29,12 @@ export default new Router({
     {
       path: '/instagram',
       name: 'instagram',
-      component: () => import(/* webpackChunkName: "newsdetails" */ './views/Instagram/Instagram.vue')
+      component: () => import(/* webpackChunkName: "instagram" */ './views/Instagram/Instagram.vue')
+    },
+    {
+      path: '/imgDetail/:id',
+      name: 'imgDetail',
+      component: () => import(/* webpackChunkName: "imgDetail" */ './views/Instagram/ImgDetail.vue')
     }
   ]
 })
