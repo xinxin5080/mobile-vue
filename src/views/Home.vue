@@ -37,7 +37,7 @@ export default {
       // src图片的渲染,数据要用模型 require,不然会被当成字符串
       navList: [
         { imgurl: require('../assets/imgs/menu01.png'), title: '新闻资讯', urlName: 'newslist' },
-        { imgurl: require('../assets/imgs/menu02.png'), title: '图片分享', urlName: '' },
+        { imgurl: require('../assets/imgs/menu02.png'), title: '图片分享', urlName: 'instagram' },
         { imgurl: require('../assets/imgs/menu03.png'), title: '商品购买', urlName: '' },
         { imgurl: require('../assets/imgs/menu04.png'), title: '留言反馈', urlName: '' },
         { imgurl: require('../assets/imgs/menu05.png'), title: '视频专区', urlName: '' },

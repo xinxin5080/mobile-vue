@@ -8,3 +8,7 @@ export const newsDetails = id => axios.get(`/getnew/${id}`).then(res => res.data
 export const comment = (id, pageindex) => axios.get(`/getcomments/${id}`, { params: { pageindex } }).then(res => res.data)
 // 发布评论
 export const publish = (id, content) => axios.post(`/postcomment/${id}`, content)
+// 图片列表顶部
+export const imgtitle = () => axios.get('/getimgcategory').then(res => res.data)
+// 获取图片列表
+export const imgdata = (id) => axios.get(`/getimages/${id}`).then(res => res.data)
