@@ -80,4 +80,34 @@ export default {
     }
   }
 }
+
+.inputbox {
+  border: 1px solid #999;
+}
+.comment h3 {
+  font-weight: bold;
+  margin: 10px 0;
+  font-size: 14px;
+}
+.line {
+  border-top: 1px solid #999;
+  padding-top: 10px;
+}
+.commentbox{
+  li:not(:last-child) {
+    border-bottom: 1px solid #999;
+    margin: 5px 0;
+  }
+  p {
+    font-size: 14px;
+  }
+  .comment-content {
+    color: #999;
+    font-size: 14px;
+  }
+}
+.comment-user, .comment-time {
+  font-size: 12px;
+  color: #26a2ff;
+}
 </style>

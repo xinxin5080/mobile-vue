@@ -23,7 +23,7 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .van-nav-bar{
   background-color:#25a3fe;
   color: #fff;
