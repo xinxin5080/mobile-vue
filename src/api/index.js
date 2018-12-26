@@ -6,3 +6,5 @@ export const newsList = () => axios.get('/getnewslist').then(res => res.data)
 export const newsDetails = id => axios.get(`/getnew/${id}`).then(res => res.data)
 // 评论列表
 export const comment = (id, pageindex) => axios.get(`/getcomments/${id}`, { params: { pageindex } }).then(res => res.data)
+// 发布评论
+export const publish = (id, content) => axios.post(`/postcomment/${id}`, content)
