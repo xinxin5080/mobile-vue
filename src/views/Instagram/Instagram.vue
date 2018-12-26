@@ -4,7 +4,7 @@
     <div class="img-list">
       <div class="cate">
         <ul id="cateul">
-          <li><span>全部</span></li>
+          <li><span @click="qubu">全部</span></li>
           <li v-for="item in imgList" :key="item.id" @click="headedtitle(item.id)">
             <span>{{item.title}}</span>
           </li>
@@ -59,24 +59,16 @@ export default {
           console.log(res)
           this.imgs = res.message
         })
+    },
+    qubu () {
+      this.id = 0
+      this.init()
     }
 
   }
 }
 </script>
-<style lang="scss">
-  img {
-    width: 100%;
-    height: 100%;
-  }
-  li > div > div{
-    display: flex;
-    flex-wrap: wrap;
-    &>figure{
-      width: 33.33%;
-    }
-  }
-</style>
+
 <style lang="scss" scoped>
   .img-list {
     margin-bottom: 55px;
@@ -129,23 +121,4 @@ export default {
     width: 100%;
     margin: auto;
   }
-  //
-  .img-detail {
-  margin-top: 40px;
-  margin-bottom: 55px;
-
-  .img-title {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  .img-info {
-    display: flex;
-    justify-content: space-around;
-    color: #26a2ff;
-    font-size: 14px;
-  }
-  .content {
-    font-size: 14px;
-  }
-}
 </style>
