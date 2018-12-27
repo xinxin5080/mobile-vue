@@ -55,6 +55,11 @@ export default new Router({
       path: '/goodscomment/:id',
       name: 'goodscomment',
       component: () => import(/* webpackChunkName: "goodscomment" */ './views/goods/Goodscomment.vue')
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: () => import(/* webpackChunkName: "cart" */ './views/shop/Cart.vue')
     }
   ]
 })

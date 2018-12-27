@@ -26,7 +26,7 @@
         <span>购物车</span>
         <span class="badge">4</span>
       </div>
-      <div class="goods-footer-item add"><span>加入购物车</span></div>
+      <div class="goods-footer-item add" @click="shopbtn"><span>加入购物车</span></div>
       <div class="goods-footer-item buy"><span>立即购买</span></div>
     </div>
   </div>
@@ -64,6 +64,10 @@ export default {
     // 携带id重定向到图文介绍
     jumpto (urlname) {
       this.$router.push({ name: urlname, params: { id: this.id } })
+    },
+    // 加入购物车
+    shopbtn () {
+      this.$router.push({ name: 'cart' })
     }
   }
 }
