@@ -17,8 +17,8 @@
       <p>{{goodslist.stock_quantity}}</p>
       <p>{{goodslist.add_time | filtertime}}</p>
     </div>
-    <van-button type="primary" size="large">图文介绍</van-button>
-    <van-button type="danger" size="large">商品评论</van-button>
+    <van-button type="primary" size="large" @click="jumpto('goodstext')">图文介绍</van-button>
+    <van-button type="danger" size="large" @click="jumpto('goodscomment')">商品评论</van-button>
     <div class="goods-footer">
       <div class="goods-footer-item contact"><span class="iconfont icon-kefu"></span><span>联系客服</span></div>
       <div class="goods-footer-item cart">
@@ -52,14 +52,18 @@ export default {
     init () {
       imagedetails(this.id)
         .then(res => {
-          console.log(res)
+          // console.log(res)
           this.img = res.message
         })
       goodsdetails(this.id)
         .then(res => {
-          console.log(res)
+          // console.log(res)
           this.goodslist = res.message[0]
         })
+    },
+    // 携带id重定向到图文介绍
+    jumpto (urlname) {
+      this.$router.push({ name: urlname, params: { id: this.id } })
     }
   }
 }

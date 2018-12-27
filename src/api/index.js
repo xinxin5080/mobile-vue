@@ -21,3 +21,5 @@ export const goodsimg = (pageindex) => axios.get(`/getgoods`, { params: { pagein
 // 获取商品价格及描述
 export const goodsdetails = id => axios.get(`/goods/getinfo/
 ${id}`).then(res => res.data)
+// 图文介绍
+export const goodstext = id => axios.get(`/goods/getdesc/${id}`).then(res => res.data)

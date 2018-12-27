@@ -45,6 +45,16 @@ export default new Router({
       path: '/goodsdetails/:id',
       name: 'goodsdetails',
       component: () => import(/* webpackChunkName: "goodsdetails" */ './views/goods/Goodsdetails.vue')
+    },
+    {
+      path: '/goodstext/:id',
+      name: 'goodstext',
+      component: () => import(/* webpackChunkName: "goodstext" */ './views/goods/Goodstext.vue')
+    },
+    {
+      path: '/goodscomment/:id',
+      name: 'goodscomment',
+      component: () => import(/* webpackChunkName: "goodscomment" */ './views/goods/Goodscomment.vue')
     }
   ]
 })
