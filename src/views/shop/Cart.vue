@@ -2,22 +2,22 @@
   <div>
       <headbtn outtitle="购物车" class="goods-detail"></headbtn>
     <div class="cart">
-    <div class="empty-cart">
+    <div class="empty-cart" v-if="this.mycart.length===0">
       <img src="" alt="" class="empty-cart-img">
       <div class="empty-cart-text">购物车还是空的</div>
       <div class="btn">去逛逛</div>
     </div>
-    <div class="cart-container">
+    <div class="cart-container" v-else v-for="item in mycart" :key="item.id">
       <span class="iconfont toogle"></span>
       <div class="item-detail">
-        <img src="" alt="">
+        <img :src="item.img" alt="">
         <div class="item-info">
-          <h3>xxxx</h3>
+          <h3>{{item.title}}</h3>
           <div class="pay">
-            <div class="pay-price">￥200</div>
+            <div class="pay-price">￥{{item.price}}</div>
             <div class="edit-quantity">
               <p class="operate-btn iconfont icon-minus"></p>
-              <p class="btn-input">2</p>
+              <p class="btn-input">{{item.num}}</p>
               <p class="operate-btn iconfont icon-plus"></p>
             </div>
           </div>
@@ -26,7 +26,7 @@
     </div>
     <div class="cart-footer">
       <div class="cart-footer-left"><span class="iconfont toogle"></span><span>全选</span></div>
-      <div class="cart-footer-center"><span>合计：</span><span class="total-price">￥200</span></div>
+      <div class="cart-footer-center"><span>合计：</span><span class="total-price">￥{{totaPrice}}</span></div>
       <div class="cart-footer-right"><span class="goto-pay">结算</span></div>
     </div>
      </div>
@@ -40,7 +40,28 @@ export default {
   },
   data () {
     return {
-
+      mycart: []// 本地存储
+    }
+  },
+  mounted () {
+    // 1.0从本地存储中获取数据
+    let mycart = JSON.parse(localStorage.getItem('mycart') || '[]')
+    this.mycart = mycart
+  },
+  computed: {
+    // 计算总价
+    totaPrice () {
+      // 先定义为0
+      let price = 0
+      // 遍历本地存储中
+      this.mycart.map(item => {
+        // 找出选中的状态
+        if (item.select) {
+          // 价格*数量
+          price += item.price * item.num
+        }
+      })
+      return price
     }
   }
 }
