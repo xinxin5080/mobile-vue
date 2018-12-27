@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="cart-footer">
-      <div class="cart-footer-left"><span class="iconfont toogle"></span><span>全选</span></div>
+      <div class="cart-footer-left"><span class="iconfont toogle" :class=" checkall ?'icon-checkbox-marked-circ': 'icon-checkbox-blank-circle-outline'" @click="hesdleall"></span><span>全选</span></div>
       <div class="cart-footer-center"><span>合计：</span><span class="total-price">￥{{totaPrice}}</span></div>
       <div class="cart-footer-right"><span class="goto-pay">结算({{nums}})</span></div>
     </div>
@@ -43,7 +43,7 @@ export default {
   },
   data () {
     return {
-      mycart: []// 本地存储
+      mycart: [] // 本地存储
     }
   },
   mounted () {
@@ -56,6 +56,18 @@ export default {
     toogle (index) {
     // 找到当前的项进行切换
       this.mycart[index].select = !this.mycart[index].select
+    },
+    // 点击全选
+    hesdleall () {
+    // 如果计算属性 checkall 为true，就把所有的数据项的selectState变为false
+    // 如果计算属性 checkall 为false，就把所有的数据项的selectState变为true
+      let all = this.checkall
+      // 切换状态
+      this.checkall = !all
+      // 遍历,将所有的状态赋值切换
+      this.mycart.map(item => {
+        item.select = !all
+      })
     }
   },
   computed: {
@@ -80,6 +92,17 @@ export default {
         num += item.num
       })
       return num
+    },
+    // 全选状态
+    checkall () {
+      let all = true
+      // 判断当前的状态是否去不选中,有一项没选中就返回false
+      this.mycart.map(item => {
+        if (!item.select) {
+          all = false
+        }
+      })
+      return all
     }
   }
 }
