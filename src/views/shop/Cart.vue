@@ -7,8 +7,11 @@
       <div class="empty-cart-text">购物车还是空的</div>
       <div class="btn">去逛逛</div>
     </div>
-    <div class="cart-container" v-else v-for="item in mycart" :key="item.id">
-      <span class="iconfont toogle"></span>
+    <div class="cart-container" v-else v-for="(item,index) in mycart" :key="index">
+      <!-- 类控制器 icon-checkbox-marked-circ(选中)
+      icon-checkbox-blank-circle-outline(未选中) -->
+      <!-- 通过select的状态来判断 -->
+      <span class="iconfont toogle" :class="item.select===true ?'icon-checkbox-marked-circ': 'icon-checkbox-blank-circle-outline'" @click="toogle(index)"></span>
       <div class="item-detail">
         <img :src="item.img" alt="">
         <div class="item-info">
@@ -47,6 +50,13 @@ export default {
     // 1.0从本地存储中获取数据
     let mycart = JSON.parse(localStorage.getItem('mycart') || '[]')
     this.mycart = mycart
+  },
+  methods: {
+    // 通过点击切换选中状态
+    toogle (index) {
+    // 找到当前的项进行切换
+      this.mycart[index].select = !this.mycart[index].select
+    }
   },
   computed: {
     // 计算总价
