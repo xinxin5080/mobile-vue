@@ -18,3 +18,6 @@ export const imagedetails = (id) => axios.get(`/getthumimages/${id}`).then(res =
 export const imagetxet = (id) => axios.get(`/getimageInfo/${id}`).then(res => res.data)
 // 商品列表
 export const goodsimg = (pageindex) => axios.get(`/getgoods`, { params: { pageindex } }).then(res => res.data)
+// 获取商品价格及描述
+export const goodsdetails = id => axios.get(`/goods/getinfo/
+${id}`).then(res => res.data)

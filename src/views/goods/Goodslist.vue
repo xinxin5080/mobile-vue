@@ -10,7 +10,7 @@
       >
       <ul class="goods-ul">
       <!-- router-link有个tag属性，用于指定router-link渲染成的标签 -->
-        <router-link class="goods-li" to="/" tag="li" v-for="item in goodsdata" :key="item.id">
+        <router-link class="goods-li" :to="`/goodsdetails/${item.id}`" tag="li" v-for="item in goodsdata" :key="item.id">
           <div class="goods-container">
             <img :src="item.img_url" alt="">
             <h4>{{item.title}}</h4>
