@@ -23,3 +23,5 @@ export const goodsdetails = id => axios.get(`/goods/getinfo/
 ${id}`).then(res => res.data)
 // 图文介绍
 export const goodstext = id => axios.get(`/goods/getdesc/${id}`).then(res => res.data)
+// 购物车
+export const goodscart = id => axios.get(`/goods/getshopcarlist/${id}`).then(res => res.data)

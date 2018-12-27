@@ -33,7 +33,7 @@
 </template>
 <script>
 import headbtn from '@/components/head'
-import { goodsdetails, imagedetails } from '@/api'
+import { goodsdetails, imagedetails, goodscart } from '@/api'
 export default {
   components: {
     headbtn
@@ -68,6 +68,43 @@ export default {
     // 加入购物车
     shopbtn () {
       this.$router.push({ name: 'cart' })
+      // 1.0 判断购物里有没有当前的东西,假设将东西存储在mycart中
+      // 1.1获取mycart
+      // 将之前存储的JSON字符串先转成JSON对象再进行操作
+      // []加引号用了JSON.parse
+      let mycart = JSON.parse(localStorage.getItem('mycart') || '[]')
+      // 1.2判断商品存不存在,可直接查找mycart的数组里有没有对应的id
+      // mycart=[{id:87,num:...}]这种数据
+      // 使用findIndex方法来判断,找不找返回-1,找到返回当前的索引index
+      // item为每一项=>里面的id是否等于商品的id
+      // this.id是字符串转成数字
+      let index = mycart.findIndex(item => item.id === parseInt(this.id))
+      console.log(index)
+      // 1.3使用返回来的数据进行判断 -1表示没找到
+      if (index === -1) {
+        goodscart(this.id)
+        // 1.5从后台获取图片
+          .then(res => {
+            // 1.4没有的话创建mycart数组,购物车页面需要的东西
+            let tempObj = {
+              select: true, // 默认选中
+              img: res.message[0].thumb_path, // 图片需要发请求
+              title: this.goodslist.title, // 标题
+              price: this.goodslist.sell_price, // 价格
+              num: 1, // 数量
+              id: this.goodslist.id
+            }
+            // 1.6push进数组中
+            mycart.push(tempObj)
+            // 1.7存储到本地
+            // 存储前先用JSON.stringify()方法将json对象转换成字符串形式
+            localStorage.setItem('mycart', JSON.stringify(mycart))
+          })
+      } else {
+        // 1.8已经有了商品,将num+1
+        mycart[index].num += 1
+        localStorage.setItem('mycart', JSON.stringify(mycart))
+      }
     }
   }
 }
