@@ -10,7 +10,7 @@
             <img :src="item.img_url" alt="">
             <div class="content">
               <p class="content-title">{{item.title}}</p>
-              <p class="content-info"><span class="content-time">{{item.add_time}}</span><span class="content-click">{{item.click}}</span></p>
+              <p class="content-info"><span class="content-time">{{item.add_time | filtertime}}</span><span class="content-click">{{item.click}}</span></p>
             </div>
           </div>
         </li>

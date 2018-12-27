@@ -5,7 +5,7 @@
     <div>
       <h3 class="img-title">{{imagetxetList.title}}</h3>
       <p class="img-info">
-        <span class="time">{{imagetxetList.add_time}}</span>
+        <span class="time">{{imagetxetList.add_time|filtertime}}</span>
         <span>{{imagetxetList.click}}次点击</span>
         <span>分类xxx</span>
       </p>
