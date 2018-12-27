@@ -35,6 +35,11 @@ export default new Router({
       path: '/imgDetail/:id',
       name: 'imgDetail',
       component: () => import(/* webpackChunkName: "imgDetail" */ './views/Instagram/ImgDetail.vue')
+    },
+    {
+      path: '/goodslist',
+      name: 'goodslist',
+      component: () => import(/* webpackChunkName: "imgDetail" */ './views/goods/Goodslist.vue')
     }
   ]
 })

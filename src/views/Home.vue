@@ -38,7 +38,7 @@ export default {
       navList: [
         { imgurl: require('../assets/imgs/menu01.png'), title: '新闻资讯', urlName: 'newslist' },
         { imgurl: require('../assets/imgs/menu02.png'), title: '图片分享', urlName: 'instagram' },
-        { imgurl: require('../assets/imgs/menu03.png'), title: '商品购买', urlName: '' },
+        { imgurl: require('../assets/imgs/menu03.png'), title: '商品购买', urlName: 'goodslist' },
         { imgurl: require('../assets/imgs/menu04.png'), title: '留言反馈', urlName: '' },
         { imgurl: require('../assets/imgs/menu05.png'), title: '视频专区', urlName: '' },
         { imgurl: require('../assets/imgs/menu06.png'), title: '反馈我们', urlName: '' }

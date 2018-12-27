@@ -16,3 +16,5 @@ export const imgdata = (id) => axios.get(`/getimages/${id}`).then(res => res.dat
 export const imagedetails = (id) => axios.get(`/getthumimages/${id}`).then(res => res.data)
 // 获取小图描述
 export const imagetxet = (id) => axios.get(`/getimageInfo/${id}`).then(res => res.data)
+// 商品列表
+export const goodsimg = (pageindex) => axios.get(`/getgoods`, { params: { pageindex } }).then(res => res.data)
