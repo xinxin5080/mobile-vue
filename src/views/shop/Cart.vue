@@ -27,7 +27,7 @@
     <div class="cart-footer">
       <div class="cart-footer-left"><span class="iconfont toogle"></span><span>全选</span></div>
       <div class="cart-footer-center"><span>合计：</span><span class="total-price">￥{{totaPrice}}</span></div>
-      <div class="cart-footer-right"><span class="goto-pay">结算</span></div>
+      <div class="cart-footer-right"><span class="goto-pay">结算({{nums}})</span></div>
     </div>
      </div>
   </div>
@@ -62,6 +62,14 @@ export default {
         }
       })
       return price
+    },
+    // 计算数量
+    nums () {
+      let num = 0
+      this.mycart.map(item => {
+        num += item.num
+      })
+      return num
     }
   }
 }
