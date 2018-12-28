@@ -48,6 +48,10 @@ export default {
   created () {
     this.init()
   },
+  mounted () {
+    // 在页面一加载时,触发vuex的函数,进行传值
+    this.$store.commit('addtotelnum')
+  },
   methods: {
     init () {
       imagedetails(this.id)

@@ -32,7 +32,7 @@
     <div class="cart-footer">
       <div class="cart-footer-left"><span class="iconfont toogle" :class="checkall ?'icon-checkbox-marked-circ': 'icon-checkbox-blank-circle-outline'" @click="hesdleall"></span><span>全选</span></div>
       <div class="cart-footer-center"><span>合计：</span><span class="total-price">￥{{totaPrice}}</span></div>
-      <div class="cart-footer-right"><span class="goto-pay">结算({{$store.state.totelnum}})</span></div>
+      <div class="cart-footer-right"><span class="goto-pay">结算({{nums}})</span></div>
     </div>
      </div>
   </div>
@@ -51,6 +51,8 @@ export default {
   mounted () {
     // 1.0从本地存储中获取数据
     this.mycart = JSON.parse(localStorage.getItem('mycart') || '[]')
+    // 在页面一加载时,触发vuex的函数,进行传值
+    this.$store.commit('addtotelnum')
   },
   methods: {
     // 通过点击切换选中状态
@@ -105,13 +107,13 @@ export default {
       return price
     },
     // 计算数量
-    // nums () {
-    //   let num = 0
-    //   this.mycart.map(item => {
-    //     num += item.num
-    //   })
-    //   return num
-    // },
+    nums () {
+      let num = 0
+      this.mycart.map(item => {
+        num += item.num
+      })
+      return num
+    },
     // 全选状态
     checkall () {
       let all = true
