@@ -6,6 +6,8 @@ import './style/iconfont.scss'
 import './style/reset.scss'
 import Vant from 'vant'
 import 'vant/lib/index.css'
+// npm i -S amfe-flexible 适配
+import 'amfe-flexible'
 // 图片预览
 import VuePreview from 'vue-preview'
 // 创建全局事件过滤器
