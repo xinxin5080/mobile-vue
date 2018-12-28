@@ -13,7 +13,7 @@ export default new Vuex.Store({
       let mycart = JSON.parse(localStorage.getItem('mycart') || '[]')
       let total = 0
       mycart.map(item => {
-        total = item.num
+        total += item.num
       })
       state.totelnum = total
     }

@@ -24,7 +24,7 @@
       <div class="goods-footer-item cart">
         <span class="iconfont icon-gouwuche"></span>
         <span>购物车</span>
-        <span class="badge">4</span>
+        <span class="badge">{{$store.state.totelnum}}</span>
       </div>
       <div class="goods-footer-item add"  @click="shopbtn"><span>加入购物车</span></div>
       <div class="goods-footer-item buy"  @click="jumptocart"><span>立即购买</span></div>
@@ -113,9 +113,6 @@ export default {
         this.$router.push({ name: 'cart' })
       }
     }
-  },
-  beforeDestroy () {
-
   }
 }
 </script>
