@@ -32,7 +32,7 @@
     <div class="cart-footer">
       <div class="cart-footer-left"><span class="iconfont toogle" :class="checkall ?'icon-checkbox-marked-circ': 'icon-checkbox-blank-circle-outline'" @click="hesdleall"></span><span>全选</span></div>
       <div class="cart-footer-center"><span>合计：</span><span class="total-price">￥{{totaPrice}}</span></div>
-      <div class="cart-footer-right"><span class="goto-pay">结算({{nums}})</span></div>
+      <div class="cart-footer-right"><span class="goto-pay">结算({{$store.state.totelnum}})</span></div>
     </div>
      </div>
   </div>
@@ -76,7 +76,7 @@ export default {
     },
     // 点击-
     subtract (index) {
-      // 小于1,提示
+      // 小于1
       if (this.mycart[index].num < 1) {
         // 将当前这一项删除
         this.mycart.splice(index, 1)
@@ -105,13 +105,13 @@ export default {
       return price
     },
     // 计算数量
-    nums () {
-      let num = 0
-      this.mycart.map(item => {
-        num += item.num
-      })
-      return num
-    },
+    // nums () {
+    //   let num = 0
+    //   this.mycart.map(item => {
+    //     num += item.num
+    //   })
+    //   return num
+    // },
     // 全选状态
     checkall () {
       let all = true

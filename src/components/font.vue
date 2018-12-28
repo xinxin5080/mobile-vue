@@ -13,8 +13,10 @@
        <p>会员</p>
      </li>
      <li>
-       <i class="iconfont icon-gouwuche"></i>
+       <i class="iconfont icon-gouwuche"  @click="jumpTo('cart')"></i>
        <p>购物车</p>
+       <!-- 使用vuex接收值 -->
+        <span class="badge">{{$store.state.totelnum}}</span>
      </li>
      <li>
        <i class="iconfont icon-xiazai17"></i>
@@ -37,6 +39,10 @@ export default {
       // 03.跳转到对应的路由
       this.$router.push({ name: urlName })
     }
+  },
+  mounted () {
+    // 在页面一加载时,触发vuex的函数,进行传值
+    this.$store.commit('addtotelnum')
   }
 }
 </script>
@@ -64,4 +70,16 @@ export default {
   .active {
   color: #26a2ff;
 }
+ .badge {
+    position: absolute;
+    top: 14%;
+    left: 67%;
+    width: 14px;
+    height: 14px;
+    border-radius: 7px;
+    background-color: #e4393c;
+    text-align: center;
+    line-height: 14px;
+    color: white;
+  }
 </style>

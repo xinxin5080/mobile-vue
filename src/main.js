@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+import store from './store/index.js'
 import './style/iconfont.scss'
 import './style/reset.scss'
 import Vant from 'vant'
