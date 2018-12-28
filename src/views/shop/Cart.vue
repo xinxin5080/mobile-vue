@@ -19,16 +19,18 @@
           <div class="pay">
             <div class="pay-price">￥{{item.price}}</div>
             <div class="edit-quantity">
-              <p class="operate-btn iconfont icon-minus"></p>
+              <!-- 减 -->
+              <p class="operate-btn iconfont icon-minus" @click="subtract(index)"></p>
               <p class="btn-input">{{item.num}}</p>
-              <p class="operate-btn iconfont icon-plus"></p>
+              <!-- 加 -->
+              <p class="operate-btn iconfont icon-plus" @click="addnum(index)"></p>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="cart-footer">
-      <div class="cart-footer-left"><span class="iconfont toogle" :class=" checkall ?'icon-checkbox-marked-circ': 'icon-checkbox-blank-circle-outline'" @click="hesdleall"></span><span>全选</span></div>
+      <div class="cart-footer-left"><span class="iconfont toogle" :class="checkall ?'icon-checkbox-marked-circ': 'icon-checkbox-blank-circle-outline'" @click="hesdleall"></span><span>全选</span></div>
       <div class="cart-footer-center"><span>合计：</span><span class="total-price">￥{{totaPrice}}</span></div>
       <div class="cart-footer-right"><span class="goto-pay">结算({{nums}})</span></div>
     </div>
@@ -48,8 +50,7 @@ export default {
   },
   mounted () {
     // 1.0从本地存储中获取数据
-    let mycart = JSON.parse(localStorage.getItem('mycart') || '[]')
-    this.mycart = mycart
+    this.mycart = JSON.parse(localStorage.getItem('mycart') || '[]')
   },
   methods: {
     // 通过点击切换选中状态
@@ -62,13 +63,31 @@ export default {
     // 如果计算属性 checkall 为true，就把所有的数据项的selectState变为false
     // 如果计算属性 checkall 为false，就把所有的数据项的selectState变为true
       let all = this.checkall
-      // 切换状态
-      this.checkall = !all
       // 遍历,将所有的状态赋值切换
       this.mycart.map(item => {
         item.select = !all
       })
+    },
+    // 点击+
+    addnum (index) {
+      this.mycart[index].num += 1
+      // 重新设置进去
+      console.log(this.mycart[index].num)
+    },
+    // 点击-
+    subtract (index) {
+      // 小于1,提示
+      if (this.mycart[index].num < 1) {
+        // 将当前这一项删除
+        this.mycart.splice(index, 1)
+      } else {
+        this.mycart[index].num -= 1
+      }
     }
+  },
+  // 离开页面前将数据保存
+  beforeDestroy () {
+    localStorage.setItem('mycart', JSON.stringify(this.mycart))
   },
   computed: {
     // 计算总价

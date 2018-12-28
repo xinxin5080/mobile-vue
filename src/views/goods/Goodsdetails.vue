@@ -26,8 +26,8 @@
         <span>购物车</span>
         <span class="badge">4</span>
       </div>
-      <div class="goods-footer-item add" @click="shopbtn"><span>加入购物车</span></div>
-      <div class="goods-footer-item buy"><span>立即购买</span></div>
+      <div class="goods-footer-item add"  @click="shopbtn"><span>加入购物车</span></div>
+      <div class="goods-footer-item buy"  @click="jumptocart"><span>立即购买</span></div>
     </div>
   </div>
 </template>
@@ -65,9 +65,12 @@ export default {
     jumpto (urlname) {
       this.$router.push({ name: urlname, params: { id: this.id } })
     },
+    // 立即购买
+    jumptocart () {
+      this.$router.push({ name: 'cart' })
+    },
     // 加入购物车
     shopbtn () {
-      this.$router.push({ name: 'cart' })
       // 1.0 判断购物里有没有当前的东西,假设将东西存储在mycart中
       // 1.1获取mycart
       // 将之前存储的JSON字符串先转成JSON对象再进行操作
@@ -99,13 +102,20 @@ export default {
             // 1.7存储到本地
             // 存储前先用JSON.stringify()方法将json对象转换成字符串形式
             localStorage.setItem('mycart', JSON.stringify(mycart))
+            // 异步请求
+            this.$router.push({ name: 'cart' })
           })
       } else {
         // 1.8已经有了商品,将num+1
         mycart[index].num += 1
+        // 重新设置进去
         localStorage.setItem('mycart', JSON.stringify(mycart))
+        this.$router.push({ name: 'cart' })
       }
     }
+  },
+  beforeDestroy () {
+
   }
 }
 </script>
